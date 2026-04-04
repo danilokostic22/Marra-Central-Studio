@@ -963,6 +963,20 @@ h3 {
     font-size: 18px; /* još manji podnaslov na telefonu */
   }
 }
+/* Desktop stil */
+h1 {
+  font-size: 48px; /* veliki naslov za računar */
+}
+
+/* Mobilni stil */
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 20px; /* znatno manji naslov na telefonu */
+    line-height: 1.2; /* da ne zauzima previše prostora */
+    text-align: center; /* da bude uredno centriran */
+  }
+}
+
 
 
 
