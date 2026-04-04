@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="https://public-frontend-cos.metadl.com/mgx/img/favicon_atoms.ico" type="image/x-icon">
+    <link rel="stylesheet" href="sajt.css">
+
+
+    <title>The Marra Central Studio Apartment</title>
+
+    <link rel="stylesheet" href="./style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Marra Central Studio Niksic</a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Početna</a></li>
+                <li><a href="#gallery">Slike</a></li>
+                <li><a href="#features">Opis</a></li>
+                <li><a href="#location">Lokacija</a></li>
+                <li><a href="#contact" class="nav-cta">Zakaži odmah!</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+    <div class="hero-overlay"></div>
+        <img src="pocetna.jpg" class="hero-image"> 
+        <alt="Luxury apartment living room" class="hero-image">
+
+        <div class="hero-content">
+            <p class="hero-subtitle fade-in">Dobrodosli u</p>
+            <h1 class="hero-title fade-in">Marra Central Studio</h1>
+            <div class="hero-divider fade-in"></div>
+            <p class="hero-description fade-in">Vrhunski luksuzni stan u srcu grada, gdje se moderna elegancija susreće s bezvremenskom udobnošću.</p>
+
+            <div class="hero-stats fade-in">
+                <div class="stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Bedrooms</span>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">Bathrooms</span>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat">
+                    <span class="stat-number">1,850</span>
+                    <span class="stat-label">Sq. Ft.</span>
+                </div>
+            </div>
+
+            <a href="#gallery" class="hero-btn fade-in">Explore the Space</a>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+
+
+<!-- Gallery Section -->
+ 
+<section class="gallery" id="gallery">
+  <div class="section-header scroll-animate">
+    <p class="section-subtitle">Pogledajte nasu</p>
+    <h2 class="section-title">Galeriju</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="gallery-grid">
+
+    <div class="gallery-item scroll-animate" data-room="Living Room">
+      <img src="dnevna soba1.jpg" alt="Spacious living room" loading="lazy"
+           onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="gallery-item scroll-animate" data-room="Master Bedroom">
+      <img src="spavaca soba.jpg" alt="Elegant master bedroom" loading="lazy"
+           onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="gallery-item scroll-animate" data-room="Kitchen">
+      <img src="kuhinja.png" alt="Modern gourmet kitchen" loading="lazy"
+           onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="gallery-item scroll-animate" data-room="Bathroom">
+      <img src="vc2.jpg" alt="Luxury bathroom" loading="lazy"
+           onclick="openLightbox(this.src)">
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="">
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById("lightbox-img").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+  }
+  function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+  }
+  </script>
+
+
+                    <!-- Features Section -->
+<section class="features-row">
+  <div class="feature-item">
+    <div class="feature-icon">
+      <!-- ikonica kuće -->
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+    </div>
+    <h3>30 Kvadrata</h3>
+  </div>
+
+  <div class="feature-item">
+    <div class="feature-icon">
+      <!-- ikonica prozora -->
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 4v16h20M2 8h20M8 4v4M16 4v4M6 16h.01M10 16h.01M14 16h.01M18 16h.01"></path>
+      </svg>
+    </div>
+    <h3>Prosvijetljen apartman</h3>
+  </div>
+
+  <div class="feature-item">
+    <div class="feature-icon">
+      <!-- ikonica namještaja -->
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+        <path d="M16 21V5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v16"></path>
+      </svg>
+    </div>
+    <h3>Dizajnerski namještaj</h3>
+  </div>
+
+  <div class="feature-item">
+    <div class="feature-icon">
+      <!-- ikonica pametnog sistema -->
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"></path>
+      </svg>
+    </div>
+    <h3>Pametni sistem</h3>
+  </div>
+
+  <div class="feature-item">
+    <div class="feature-icon">
+      <!-- ikonica kuhinje -->
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+        <path d="M2 8h16v8H2z"></path>
+        <line x1="6" y1="1" x2="6" y2="4"></line>
+        <line x1="10" y1="1" x2="10" y2="4"></line>
+        <line x1="14" y1="1" x2="14" y2="4"></line>
+      </svg>
+    </div>
+    <h3>Praktična kuhinja</h3>
+  </div>
+
+  <div class="feature-item">
+    <div class="feature-icon">
+      <!-- ikonica parkinga -->
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="3" y1="9" x2="21" y2="9"></line>
+        <line x1="9" y1="21" x2="9" y2="9"></line>
+      </svg>
+    </div>
+    <h3>Privatni parking</h3>
+  </div>
+</section>
+
+<!-- Pricing Banner -->
+
+</div>
+</section>
+<section class="location" id="location">
+    <div class="section-container">
+        <div class="section-header scroll-animate">
+            <p class="section-subtitle">Glavna adresa</p>
+            <h2 class="section-title">Lokacija</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="location-content">
+            <div class="location-info scroll-animate">
+                <h3>U srcu grada</h3>
+                <p class="location-address">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    4 Alekse Backovica, <br>Niksic, Crna Gora 
+                </p>
+                <p class="location-desc">Smješten u jednom od najprestižnijih djelova grada, ovaj apartman pruža vrhunsku lokaciju u neposrednoj blizini restorana, prodavnica, zabavnih sadržaja i kulturnih znamenitosti.</p>
+                <div class="nearby-places">
+                    <h4>Sta je sve blizu?</h4>
+                    <ul>
+                        <li>
+                            <span class="place-icon">🚇</span>
+                            <div>
+                                <strong>Centar grada</strong>
+                                <span>3 minuta setnjom</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="place-icon">🌳</span>
+                            <div>
+                                <strong>Park</strong>
+                                <span>10 minuta setnjom</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="place-icon">🛍️</span>
+                            <div>
+                                <strong>Trzni Centar</strong>
+                                <span>3 minuta setnjom</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="place-icon">🍽️</span>
+                            <div>
+                                <strong>Restoran koncept</strong>
+                                <span>4 minuta setnjom</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="contact" id="contact">
+    <div class="section-container">
+        <div class="section-header scroll-animate">
+            <p class="section-subtitle">Budite u kontaktu</p>
+            <h2 class="section-title">Zakazite Nocenje</h2>
+            <div class="section-divider"></div>
+        </div>
+        </div>
+                   
+            
+<section class="booking-section">
+    <div class="booking-container">
+        <h2>Rezervišite svoj boravak</h2>
+        <p>Apartman: <strong>Marra Central Studio Nikšić</strong></p>
+
+        <a href="https://www.booking.com/hotel/me/marra-central-studio-niksic1.sr.html" target="_blank" class="booking-button">
+            Provjerite dostupnost i rezervišite
+        </a>
+    </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>The Marra Central Studio</h3>
+        <p>Luksuzni život, sami centar grada.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Pocetna</a>
+        <a href="#gallery">Slike</a>
+        <a href="#features">Opis</a>
+        <a href="#location">Lokacija</a>
+        <a href="#contact">Kontakt telefon</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 The Marra Central Studio. Sva prava zadrzana.</p>
+         </div>
+        </div>
+    </footer>
+
+          <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+        <script src="./script.js">
+      </script> 
+   </body> 
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,944 @@
+:root {
+  --primary: #1a1a2e;
+  --secondary: #5f0eb;
+  --accent: #c9a96e;
+  --accent-dark: #b08d55;
+  --dark-text: #2d2d2d;
+  --light-text: #ffffff;
+  --muted: #8a8a8a;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.15);
+  --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  height: 100px;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--dark-text);
+  background-color: var(--light-text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+}
+
+main{
+    flex: 1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* =========================================
+   Navigation
+========================================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: var(--transition);
+}
+
+.navbar.scrolled {
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 12px 0;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--light-text);
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav-links a {
+  color:rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  position: relative;
+}
+.nav-links a:not(.nav-cta)::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--accent);
+    transition: var(--transition);
+}
+
+.nav-links a:not(.nav-cta):hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--light-text);
+}
+
+.nav-cta {
+    background: var(--accent);
+    color: var(--light-text) !important;
+    padding: 10px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-cta:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--light-text);
+    transition: var(--transition);
+}
+
+/* =========================================
+   light box 
+========================================= */
+
+
+
+/* Galerija grid - horizontalni raspored */
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Svaka slika kao mala kockica */
+.gallery-item img {
+  width: 200px;       /* smanjene slike */
+  height: 150px;      /* fiksna visina da budu kockice */
+  object-fit: cover;  /* da se slika lijepo uklopi */
+  border: 3px solid #ccc; /* okvir oko slike */
+  border-radius: 8px; /* blago zaobljeni uglovi */
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+  border-color: #666;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border: 3px solid #fff;
+  border-radius: 10px;
+}
+
+
+
+
+/* ============================================
+   Hero Section
+   ============================================ */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(26, 26, 46, 0.5) 0%,
+        rgba(26, 26, 46, 0.3) 40%,
+        rgba(26, 26, 46, 0.6) 100%
+    );
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--light-text);
+    padding: 0 20px;
+    max-width: 800px;
+}
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+    margin: 0 auto 24px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-description {
+    font-size: 1.15rem;
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 560px;
+    margin: 0 auto 40px;
+    opacity: 0.9;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 48px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 16px 44px;
+    background: var(--accent);
+    color: var(--light-text);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-btn:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201, 169, 110, 0.35);
+}
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), transparent);
+    animation: scrollPulse 3s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+    50% { opacity: 1; transform: scaleY(1); }
+}
+
+.section-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 16px;
+}
+
+.section-divider {
+    width: 50px;
+    height: 2px;
+    background: var(--accent);
+    margin: 0 auto;
+}
+
+.gallery-grid {
+    display: flex;          /* horizontalni raspored */
+    flex-wrap: wrap;        /* da prelazi u novi red ako nema mjesta */
+    gap: 15px;              /* razmak između slika */
+    justify-content: center;/* centriraj slike */
+}
+
+.gallery-item {
+    border: 3px solid #ccc; /* okvir oko svake slike */
+    border-radius: 8px;     /* blago zaobljeni uglovi */
+    overflow: hidden;
+    cursor: pointer;
+    width: 650px;           /* širina svake slike */
+    height: 400px;          /* visina svake slike */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* da se slika uklopi u okvir */
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item:hover {
+    border-color: #c9a96e;     /* promjena boje okvira na hover */
+}
+
+.gallery {
+    padding: 50px 0; /* umjesto 100px, manje razmaka gore/dolje */
+}
+
+/* Lightbox (velika slika kad klikneš) */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 80%;   /* smanjena velika slika */
+    max-height: 80%;
+    border: 3px solid #fff;
+    border-radius: 10px;
+}
+
+.features {
+  padding: 100px 0;
+  background: var(--light-text);
+}
+
+/* Raspored svih 6 ikonica u jednom redu */
+.features-row {
+  display: flex;
+  flex-wrap: wrap;       /* da se prelomi na manjem ekranu */
+  justify-content: center;
+  gap: 40px;
+  margin: 40px 0;
+}
+
+.feature-item {
+  text-align: center;
+  width: 120px;          /* širina svake kartice */
+}
+
+/* Stil ikonice */
+.feature-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  color: var(--accent);
+  transition: all 0.3s ease; /* glatka animacija */
+}
+
+/* Naslov ispod ikonice */
+.feature-item h3 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--dark-text);
+}
+
+/* Hover efekat na ikonicu */
+.feature-item:hover .feature-icon {
+  background: var(--accent);   /* pozadina se mijenja */
+  color: var(--light-text);    /* ikonica postaje svijetla */
+  transform: scale(1.1);       /* blago povećanje */
+}
+
+/* Responsive za mobilne uređaje */
+@media (max-width: 768px) {
+  .features-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.pricing-banner {
+    background: var(--primary);
+    border-radius: 16px;
+    padding: 50px 60px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+
+.pricing-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(201, 169, 110, 0.08);
+}
+
+.pricing-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.pricing-label {
+    color: var(--accent);
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.pricing-amount {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--light-text);
+    font-weight: 700;
+}
+
+.pricing-amount span {
+    font-size: 1.2rem;
+    font-weight: 400;
+    opacity: 0.6;
+}
+
+.pricing-right {
+    text-align: right;
+}
+
+.pricing-right p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.pricing-btn {
+    display: inline-block;
+    padding: 14px 36px;
+    background: var(--accent);
+    color: var(--light-text);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+}
+
+.pricing-btn:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   Location Section
+   ============================================ */
+
+.location {
+    padding: 100px 0;
+    background: var(--secondary);
+}
+
+.location-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.location-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+    color: var(--dark-text);
+}
+
+.location-address {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.location-map {
+    width: 100%;
+    height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    filter: grayscale(1) invert(0.9) contrast(1.2);
+}
+
+/* ============================================
+   Contact Section
+   ============================================ */
+
+.contact {
+    padding: 100px 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+}
+
+.contact-form-group {
+    margin-bottom: 24px;
+}
+
+.contact-form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--dark-text);
+}
+
+.contact-form-group input,
+.contact-form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.contact-form-group input:focus,
+.contact-form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.1);
+}
+
+.contact-form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+        .booking-section {
+        padding: 60px 20px;
+        background: linear-gradient(135deg, #f5f7fa, #e4ecf7);
+        display: flex;
+        justify-content: center;
+        }
+        .booking-container {
+        background: white;
+        padding: 50px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        max-width: 400px;
+        width: 100%;
+        }
+        .booking-container h2 {
+        margin-bottom: 10px;
+        font-size: 24px;
+        }
+        .booking-container p {
+        margin-bottom: 25px; color: #555;
+        font-size: 16px;
+        }
+        .booking-button {
+        display: inline-block; padding: 15px 25px;
+        background: #0071c2;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        }
+        .booking-button:hover {
+        background: #005999;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+/* ============================================
+   Footer
+   ============================================ */
+
+.page-wrapper {
+  min-height: 100vh;       /* cijela visina ekrana */
+  display: flex;
+  flex-direction: column;  /* header, main, footer u koloni */
+}
+
+.main-content {
+  flex: 1;                 /* zauzima prostor između headera i footera */
+}
+
+.footer {
+  padding: 80px 0 40px;
+  background: var(--primary);
+  color: var(--light-text);
+  margin-top: auto;        /* gura footer na dno */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.footer-brand h3 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+  padding-left: 5px;
+}
+
+.footer-bottom {
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive verzija */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Base Styles Refinement */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button, .btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-family: inherit;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-dark);
+}
+
+/* Mobile Nav Styles */
+.nav-menu-mobile {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: var(--primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    transition: var(--transition);
+    z-index: 1000;
+}
+
+.nav-menu-mobile.active {
+    right: 0;
+}
+
+.nav-menu-mobile a {
+    font-size: 1.2rem;
+    color: var(--light-text);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.nav-menu-mobile a:hover {
+    color: var(--accent);
+}
+
+.nav-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-close span {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--light-text);
+    margin-bottom: 0;
+}
+
+.nav-close span:nth-child(1) {
+    transform: rotate(45deg) translate(1px, 1px);
+}
+
+.nav-close span:nth-child(2) {
+    transform: rotate(-45deg) translate(1px, -1px);
+}
+
+/* Glassmorphism Effect for Header on Scroll */
+.header.scrolled {
+    padding: 15px 0;
+    background: rgba(26, 26, 46, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Section specific reveal delays */
+.reveal-delay-1 { transition-delay: 0.2s; }
+.reveal-delay-2 { transition-delay: 0.4s; }
+.reveal-delay-3 { transition-delay: 0.6s; }
+
+/* Selection Color */
+::selection {
+    background: var(--accent);
+    color: var(--light-text);
+}
+
+
