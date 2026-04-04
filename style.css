@@ -940,5 +940,29 @@ button, .btn {
     background: var(--accent);
     color: var(--light-text);
 }
+/* Stil za desktop (računar) */
+h1 {
+  font-size: 48px; /* naslov */
+}
+h2 {
+  font-size: 32px; /* podnaslov */
+}
+h3 {
+  font-size: 24px; /* manji podnaslov */
+}
+
+/* Stil za mobilne telefone */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 28px; /* manji naslov na telefonu */
+  }
+  h2 {
+    font-size: 22px; /* manji podnaslov na telefonu */
+  }
+  h3 {
+    font-size: 18px; /* još manji podnaslov na telefonu */
+  }
+}
+
 
 
