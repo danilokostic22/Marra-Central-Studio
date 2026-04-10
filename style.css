@@ -1018,7 +1018,7 @@ h1 {
 
     /* Poseban stil za žuto dugme "Zakaži odmah" na mobitelu */
     .nav-cta {
-        background-color: #f7e018 !important; /* Žuta boja */
+        background-color: #fdf5e6 !important; /* Žuta boja */
         color: #000 !important;
         font-weight: bold !important;
         border-radius: 4px !important;
