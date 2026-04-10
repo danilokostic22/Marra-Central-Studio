@@ -976,54 +976,58 @@ h1 {
     text-align: center; /* da bude uredno centriran */
   }
 }
-/* --- KOD ZA MOBILNU VERZIJU (TELEFON) --- */
+
+
+/* --- MOBILNA VERZIJA: FINALNA POPRAVKA --- */
 @media screen and (max-width: 768px) {
     
-    /* Podešavanje glavnog kontejnera/sekcije */
-    header, .hero-section { 
-        padding: 20px 10px !important;
-        text-align: center; /* Centriramo sve na telefonu */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    /* Smanjujemo logo da ne udara u ivice i da stane u red */
+    .nav-logo {
+        font-size: 1.2rem !important;
+        padding: 10px !important;
+        display: block !important;
+        width: auto !important;
+        text-align: left !important;
     }
 
-    /* Smanjivanje i centriranje glavnog naslova (Marra Central Studio Niksic) */
-    h1, .logo-text { 
-        font-size: 24px !important; /* Manji font da ne bode oči */
-        line-height: 1.2;
-        margin-bottom: 20px !important;
-        width: 100%;
-        text-align: center;
-        position: relative !important;
-        left: 0 !important;
-        top: 0 !important;
+    /* Centriramo kontejner */
+    .nav-container {
+        padding: 5px 15px !important;
+        display: flex !important;
+        flex-direction: column !important; /* Logo gore, linkovi dolje */
+        align-items: center !important;
     }
 
-    /* Navigacija (Početna, Slike, Opis...) */
-    nav, .menu {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap; /* Ako ne stane u jedan red, prebacit će u drugi */
-        gap: 10px; /* Razmak između stavki */
-        margin-top: 10px;
+    /* Podešavamo navigacione linkove da budu u jednom redu i sitniji */
+    .nav-links {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        margin-top: 10px !important;
+        padding: 0 !important;
+        list-style: none !important;
     }
 
-    nav a, .menu-item {
-        font-size: 14px !important; /* Malo manji font za meni */
-        padding: 5px 8px;
+    .nav-links li a {
+        font-size: 12px !important;
+        padding: 4px 6px !important;
+        white-space: nowrap !important; /* Da se ne lome riječi */
     }
 
-    /* Dugme "Zakaži odmah" ako postoji na mobilnom */
-    .cta-button {
-        width: 80%;
-        margin: 15px auto;
-        font-size: 16px;
+    /* Poseban stil za žuto dugme "Zakaži odmah" na mobitelu */
+    .nav-cta {
+        background-color: #f7e018 !important; /* Žuta boja */
+        color: #000 !important;
+        font-weight: bold !important;
+        border-radius: 4px !important;
     }
 
-    /* Sakrivanje ukrasnih elemenata koji smetaju na malom ekranu */
-    .scroll-indicator {
-        bottom: 10px !important;
+    /* Sakrij toggle dugme (tri crtice) ako ti ne radi JS, 
+       bolje da se vide linkovi odmah kao na tvojoj slici */
+    .nav-toggle {
+        display: none !important;
     }
 }
 
